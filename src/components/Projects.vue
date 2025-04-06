@@ -32,7 +32,7 @@
   const projects = ref([
     {
       id: 1,
-      image:'/image_1_for_my_wesite.png',
+      image:'./image_1.png',
       title: 'Project 1',
       category: 'Web App',
       description: "I designed and developed a fully responsive personal portfolio website using HTML, Tailwind CSS, and Vue.js. The site showcases my professional skills, services, and project work in a clean and modern layout. It includes smooth animations, mobile-first responsiveness, and a dark/light theme toggle. The project also integrates AOS (Animate on Scroll) for subtle animations and a contact form for visitor inquiries. It's optimized for performance and SEO, ensuring fast load times and better visibility on search engines.",
@@ -41,7 +41,7 @@
     },
     {
       id: 2,
-      image:'/image_2_for_my_wesite.png',
+      image:'./image_2_for_my_wesite.png',
       title: 'Project 2',
       category: 'Web App',
       description: "I designed and developed a fully responsive personal portfolio website using HTML, Tailwind CSS, and Vue.js. The site showcases my professional skills, services, and project work in a clean and modern layout. It includes smooth animations, mobile-first responsiveness, and a dark/light theme toggle. The project also integrates AOS (Animate on Scroll) for subtle animations and a contact form for visitor inquiries. It's optimized for performance and SEO, ensuring fast load times and better visibility on search engines.",
@@ -50,7 +50,7 @@
     },
     {
       id: 3,
-      image:'/image_3_for_my_wesite.png',
+      image:'./image_3_for_my_wesite.png',
       title: 'Project 3',
       category: 'Web App',
       description: "I designed and developed a fully responsive personal portfolio website using HTML, Tailwind CSS, and Vue.js. The site showcases my professional skills, services, and project work in a clean and modern layout. It includes smooth animations, mobile-first responsiveness, and a dark/light theme toggle. The project also integrates AOS (Animate on Scroll) for subtle animations and a contact form for visitor inquiries. It's optimized for performance and SEO, ensuring fast load times and better visibility on search engines.",
@@ -59,7 +59,7 @@
     },
     {
       id: 4,
-      image:'/image_4_for_my_wesite.png',
+      image:'./image_4_for_my_wesite.png',
       title: 'Project 4',
       category: 'Web App',
       description: "I designed and developed a fully responsive personal portfolio website using HTML, Tailwind CSS, and Vue.js. The site showcases my professional skills, services, and project work in a clean and modern layout. It includes smooth animations, mobile-first responsiveness, and a dark/light theme toggle. The project also integrates AOS (Animate on Scroll) for subtle animations and a contact form for visitor inquiries. It's optimized for performance and SEO, ensuring fast load times and better visibility on search engines.",
