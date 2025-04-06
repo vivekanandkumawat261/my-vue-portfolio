@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+  
+html{
+    scroll-behavior: smooth;
+
+}
+
+body{
+    bont-family; 'Fredoka','sans-serif';
+}
