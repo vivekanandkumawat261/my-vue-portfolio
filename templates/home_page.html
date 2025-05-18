@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community Pulse - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .login-btn {
+      background-color: pink;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+    }
+    .search-bar input {
+      width: 60%;
+      padding: 0.6rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+    }
+    .event-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .event-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .event-info {
+      padding: 0.8rem;
+    }
+    .event-title {
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .event-meta {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Community Pulse</h1>
+    <button class="login-btn">Login</button>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search events">
+  </div>
+
+  <div class="events-grid" id="eventsGrid">
+    <!-- Event cards will be inserted here -->
+  </div>
+
+  <script>
+    const events = [
+      { title: "Live Music Festival", img: "/static/images/image_festival.jpg", desc: "Enjoy live music", meta: "by User A" },
+      { title: "Jewelry Exhibition", img: "/static/images/image_festival.jpg", desc: "Beautiful jewelry", meta: "by User B" },
+      { title: "Tennis Tournament", img: "/static/images/image_festival.jpg", desc: "Competition starts soon", meta: "by User C" },
+      { title: "Jewelry Exhibition", img: "/static/images/image_festival.jpg", desc: "Gemstone showcase", meta: "by User D" },
+      { title: "Live Music Festival", img: "/static/images/image_festival.jpg", desc: "Rock and Jazz", meta: "by User E" },
+      { title: "Tennis Match", img: "/static/images/image_festival.jpg", desc: "Exciting game", meta: "by User F" },
+      { title: "Jewelry Exhibition", img: "/static/images/image_festival.jpg", desc: "Luxury collection", meta: "by User G" },
+      { title: "Live Music Festival", img: "/static/images/image_festival.jpg", desc: "Open air stage", meta: "by User H" },
+    ];
+
+    const grid = document.getElementById("eventsGrid");
+
+    function renderEvents(filteredEvents) {
+      grid.innerHTML = "";
+      filteredEvents.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "event-card";
+        card.innerHTML = `
+          <img src="${event.img}" alt="${event.title}">
+          <div class="event-info">
+            <div class="event-title">${event.title}</div>
+            <div>${event.desc}</div>
+            <div class="event-meta">${event.meta}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Initial render
+    renderEvents(events);
+
+    // Search functionality
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase();
+      const filtered = events.filter(event =>
+        event.title.toLowerCase().includes(query) ||
+        event.desc.toLowerCase().includes(query) ||
+        event.meta.toLowerCase().includes(query)
+      );
+      renderEvents(filtered);
+    });
+  </script>
+
+</body>
+</html>

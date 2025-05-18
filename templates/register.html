@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login | Community Pulse</title>
+  <title>Register | Community Pulse</title>
   <style>
     body {
       margin: 0;
@@ -108,11 +108,15 @@
 
   <div class="card">
     <h2>Community Pulse</h2>
-    <input type="text" placeholder="User Name" />
-    <input type="password" placeholder="Password" />
-    <button class="button">Login</button>
+   <form method="POST" action="{{url_for('register')}}">
+        <input type="text" name="username" placeholder="User Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="tel" name="phone" placeholder="Phone" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit" class="button">Register</button>
+   </form>
     <div class="link">
-      Don’t have an account? <a href="registration-page.html">Register here</a>
+      Already have an account? <a href="{{ url_for('first_page') }}">Login</a>
     </div>
   </div>
 </body>

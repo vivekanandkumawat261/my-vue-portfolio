@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register | Community Pulse</title>
+  <title>Login | Community Pulse</title>
   <style>
     body {
       margin: 0;
@@ -108,13 +108,13 @@
 
   <div class="card">
     <h2>Community Pulse</h2>
-    <input type="text" placeholder="User Name" />
-    <input type="email" placeholder="Email" />
-    <input type="tel" placeholder="Phone" />
-    <input type="password" placeholder="Password" />
-    <button class="button">Register</button>
+    <form method="POST" action="/user_login">
+       <input type="text" name="username" placeholder="User Name" required />
+       <input type="password" name="password" placeholder="Password" required />
+       <button type="submit" class="button">Login</button>
+    </form>
     <div class="link">
-      Already have an account? <a href="login-page.html">Login</a>
+      Don’t have an account? <a href="{{ url_for('register') }}">Register here</a>
     </div>
   </div>
 </body>

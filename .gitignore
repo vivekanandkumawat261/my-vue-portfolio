@@ -1,0 +1,16 @@
+# Ignore virtual environment
+venv/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment variable files
+.env
+
+# SQLite database (optional)
+*.db
+
+# VSCode config (optional)
+.vscode/
