@@ -37,6 +37,8 @@ def home():
 @app.route('/first_page')
 def first_page():
     return render_template('home_page.html')
+
+ 
  
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -105,7 +107,7 @@ def user_login():
             
             login_user(user)  # Flask-Login: Log in the user
             flash('Login successful!')
-            return redirect(url_for('home_page', name=username))
+            return redirect(url_for('user_home_page', name=username))
         else:
             flash('Invalid username or password. Please try again.')
             return redirect(url_for('user_login'))
@@ -152,9 +154,54 @@ def home_page(name):
 #     quizzes=Quiz.query.all()
 #     questions=Question.query.all()
     return render_template("home_page.html",name=name)
+@app.route("/user_home_page/<string:name>")
+def user_home_page(name):
+      events = {
+                1: {
+                    "title": "Live Music Festival",
+                    "date": "Aug 14",
+                    "desc": "Experience live music, local food and beverages.",
+                    "location": "Silver Auditorium, Ahmedabad, Gujarat",
+                    "image": "/static/images/tennis-match.jpg",
+                    "tag": "Music"
+                },
+    # Add other events similarly
+       }
+#     # chapters = Subject.query.get_or_404(subject_id)
+#     subjects=Subject.query.all()
+#     chapters=Chapter.query.all()
+#     quizzes=Quiz.query.all()
+#     questions=Question.query.all()
+      return render_template("user_home_page.html",name=name,events=events)
 
 
+@app.route("/add_event", methods=['GET', 'POST'])
+def add_event():
+    if request.method == 'POST':
+        # You'll capture form data here when the form is fully functional with 'name' attributes
+        pass
+    return render_template("add_event.html")
 
+
+# Dummy event data (you should use your database instead)
+events = {
+    1: {
+        "title": "Live Music Festival",
+        "date": "Aug 14",
+        "desc": "Experience live music, local food and beverages.",
+        "location": "Silver Auditorium, Ahmedabad, Gujarat",
+        "image": "/static/images/tennis-match.jpg",
+        "tag": "Music"
+    },
+    # Add other events similarly
+}
+
+@app.route('/event/<int:event_id>')
+def event_detail(event_id):
+    event = events.get(event_id)
+    if not event:
+        return "Event not found", 404
+    return render_template("event_detail.html", event=event)
 # @app.route("/admin_dashboard/<string:name>")
 # def admin_dashboard(name):
 #     subjects=Subject.query.all()
