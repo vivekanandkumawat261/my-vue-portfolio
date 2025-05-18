@@ -156,23 +156,13 @@ def home_page(name):
     return render_template("home_page.html",name=name)
 @app.route("/user_home_page/<string:name>")
 def user_home_page(name):
-      events = {
-                1: {
-                    "title": "Live Music Festival",
-                    "date": "Aug 14",
-                    "desc": "Experience live music, local food and beverages.",
-                    "location": "Silver Auditorium, Ahmedabad, Gujarat",
-                    "image": "/static/images/tennis-match.jpg",
-                    "tag": "Music"
-                },
-    # Add other events similarly
-       }
+      events = Event.query.all()
 #     # chapters = Subject.query.get_or_404(subject_id)
 #     subjects=Subject.query.all()
 #     chapters=Chapter.query.all()
 #     quizzes=Quiz.query.all()
 #     questions=Question.query.all()
-      return render_template("user_home_page.html",name=name,events=events)
+      return render_template("user_home_page.html",name=name)
  
 @app.route('/add_event', methods=['GET', 'POST'])
 def add_event():
@@ -185,7 +175,7 @@ def add_event():
         category = request.form['category']
         reg_start = request.form['regStart']
         reg_end = request.form['regEnd']
-        organizer_id = session.get("user_id") 
+        organizer_id = 1  # Assuming the organizer is the logged-in user 
         # Handle file upload
         photo = request.files.get('photo')
         photo_filename = None
@@ -208,9 +198,10 @@ def add_event():
         )
         db.session.add(event)
         db.session.commit()
-
+        events = Event.query.all()
         flash('Event added successfully!', 'success')
-        return redirect(url_for('some_page'))
+        # print(events)
+        return redirect(url_for('user_home_page', name="vivek"))
 
     return render_template('add_event.html')
 

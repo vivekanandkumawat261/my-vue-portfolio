@@ -201,7 +201,7 @@
     </div>
 
     <!-- Grid of Cards -->
-     {% for event in events %}
+     <!-- {% for event in events %}
       <a href="{{ url_for('event_detail', event_id=event) }}" style="text-decoration: none; color: inherit;">
                 <div class="card">
             <img src="{{ event.image }}" alt="Event">
@@ -214,10 +214,10 @@
             </div>
           </div>
            </a>
-      {% endfor %}
+      {% endfor %} -->
     <div class="grid">
          {% for event in events %}
-      <a href="{{ url_for('event_detail', event_id=event) }}" style="text-decoration: none; color: inherit;">
+          <a href="{{ url_for('event_detail', event_id=event.id) }}" style="text-decoration: none; color: inherit;">
 
       <!-- Live Music Festival -->
             <div class="card">
