@@ -36,7 +36,36 @@ def home():
 
 @app.route('/first_page')
 def first_page():
-    return render_template('login.html')
+    return render_template('home_page.html')
+ 
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        user = User.query.filter_by(email=email).first()
+
+        if user and check_password_hash(user.password, password):
+            if user.blocked:
+                flash('Your account is blocked. Please contact admin.', 'danger')
+                return redirect(url_for('login'))
+
+            session['user_id'] = user.id
+            session['username'] = user.username
+            session['role'] = user.role
+            flash(f"Welcome back, {user.username}!", 'success')
+
+            # Redirect based on role (optional)
+            if user.role == 0:
+                return redirect(url_for('admin_dashboard'))  # example route
+            else:
+                return redirect(url_for('user_dashboard'))  # example route
+        else:
+            flash('Invalid email or password', 'danger')
+            return redirect(url_for('login'))
+
+    return render_template("login.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
